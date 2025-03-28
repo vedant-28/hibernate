@@ -12,7 +12,11 @@
 		<property name="hbm2ddl.auto">create</property>
 		<property name="show_sql">true</property>
 		<property name="format_sql">true</property>
+		
 		<mapping class="com.orm.hibernate.entities.Student" />
 		<mapping class="com.orm.hibernate.entities.Address" />
+		
+		<mapping class="com.orm.mappings.Question" />
+		<mapping class="com.orm.mappings.Answer" />
 	</session-factory>
 </hibernate-configuration>
