@@ -3,6 +3,7 @@ package com.orm.mappings;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Answer {
@@ -12,15 +13,19 @@ public class Answer {
 	private int a_id;
 	private String answer;
 	
+	@ManyToOne
+	private Question question;
+	
 	public Answer() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Answer(int a_id, String answer) {
+	public Answer(int a_id, String answer, Question question) {
 		super();
 		this.a_id = a_id;
 		this.answer = answer;
+		this.question = question;
 	}
 
 	public int getA_id() {
@@ -39,8 +44,16 @@ public class Answer {
 		this.answer = answer;
 	}
 
+	public Question getQuestion() {
+		return question;
+	}
+
+	public void setQuestion(Question question) {
+		this.question = question;
+	}
+
 	@Override
 	public String toString() {
-		return "Answer [a_id=" + a_id + ", answer=" + answer + "]";
-	}	
+		return "Answer [a_id=" + a_id + ", answer=" + answer + ", question=" + question + "]";
+	}
 }
