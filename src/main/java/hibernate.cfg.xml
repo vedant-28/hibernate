@@ -18,5 +18,9 @@
 		
 		<mapping class="com.orm.mappings.Question" />
 		<mapping class="com.orm.mappings.Answer" />
+		
+		<mapping class="com.orm.manytomany.Employee" />
+		<mapping class="com.orm.manytomany.Project" />
+		
 	</session-factory>
 </hibernate-configuration>
