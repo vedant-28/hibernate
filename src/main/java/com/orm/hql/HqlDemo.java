@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.query.Query;
 
@@ -52,6 +53,33 @@ public class HqlDemo {
 			System.out.println(s.getName() + s.getCity());
 		}
 		
+		// Complex HQL queries
+		Transaction trxn = session.beginTransaction();
+		
+		// DELETE
+		String query5 = "DELETE FROM Student AS s WHERE s.city=:c";
+		Query<Student> q5 = session.createQuery(query5, Student.class);
+		q5.setParameter("c", "Tokyo");
+		int result = q5.executeUpdate();
+		System.out.println(result + " row(s) affected...");
+		
+		// UPDATE
+		String query6 = "UPDATE Student SET city=:c WHERE name=:n";
+		Query<Student> q6 = session.createQuery(query6, Student.class);
+		q6.setParameter("c", "Tokyo");
+		q6.setParameter("n", "XYZ");
+		int result1 = q6.executeUpdate();
+		System.out.println(result1 + " row(s) affected...");
+		
+		// JOIN
+		String query7 = "SELECT q.question, q.qid, a.answer FROM Question AS q INNER JOIN q.answer as a";
+		Query<Object> q7 = session.createQuery(query7, Object.class);
+		List<Object> objects = q7.getResultList();
+		for(Object obj : objects) {
+			System.out.println(obj);
+		}
+		
+		trxn.commit();
 		session.close();
 	}
 	
