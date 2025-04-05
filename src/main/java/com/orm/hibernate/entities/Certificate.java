@@ -1,8 +1,10 @@
 package com.orm.hibernate.entities;
 
+import jakarta.persistence.Cacheable;
 import jakarta.persistence.Embeddable;
 
 @Embeddable
+@Cacheable
 public class Certificate {
 	private String course;
 	private String duration;

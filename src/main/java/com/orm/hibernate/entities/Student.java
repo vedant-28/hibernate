@@ -1,9 +1,11 @@
 package com.orm.hibernate.entities;
 
+import jakarta.persistence.Cacheable;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
 @Entity
+@Cacheable
 public class Student {
 	
 	@Id

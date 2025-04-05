@@ -13,6 +13,9 @@
 		<property name="show_sql">true</property>
 		<property name="format_sql">true</property>
 		
+		<property name="cache.use_second_level_cache">true</property>
+		<property name="cache.region.factory_class">org.hibernate.cache.jcache.internal.JCacheRegionFactory</property>
+		
 		<mapping class="com.orm.hibernate.entities.Student" />
 		<mapping class="com.orm.hibernate.entities.Address" />
 		
